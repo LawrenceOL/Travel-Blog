@@ -2,6 +2,7 @@ const { GET_POST_DETAIL,POST_COMMENT, TOGGLE_MORE_COMMENT, UPDATE_NEW_COMMENT } 
 
 const initialState = {
     postDetail: {},
+    comments: [],
     newComment: '',
     moreComment: false
 }
@@ -9,7 +10,7 @@ const initialState = {
 const PostDetailReducer = (state =initialState, action) => {
     switch (action.type) {
         case GET_POST_DETAIL:
-            return {...state, postDetail: action.payload}
+            return {...state, postDetail: action.payload, comments: action.payload.comments }
         case UPDATE_NEW_COMMENT:
             return {...state, newComment: action.payload }
         case POST_COMMENT:
