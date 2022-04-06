@@ -23,7 +23,7 @@ const HomePage = (props) => {
     
     
     return (
-        <div>
+        <div className='home'>
             {props.postState.posts.map((post) => (
                 <Post key={post._id} post={post} />
             ))}
