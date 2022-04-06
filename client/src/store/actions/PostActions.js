@@ -6,7 +6,10 @@ import * as types from '../types'
 export const LoadPosts = () => {
     return async (dispatch) => {
         try {
+            console.log("Before GET");
+            
             const posts = await services.GetPosts()
+            console.log(posts, "After GET");
             dispatch({
                 type: types.GET_POSTS,
                 payload: posts
@@ -17,31 +20,3 @@ export const LoadPosts = () => {
     }
 }
 
-//Load detail of a post from server to state
-export const LoadPostDetail = (id) => {
-    return async (dispatch) => {
-        try {
-            const postDetail = await services.GetPostDetail(id)
-            dispatch({
-                type: types.GET_POST_DETAIL,
-                payload: postDetail
-            })            
-        } catch (error) {
-            throw error
-        }
-    }
-}
-
-//Add a comment to database
-export const UploadComment = (id, comment) => {
-    return async () => {
-        try {
-            await services.GetPostDetail(id, comment)
-            .then((res) => console.log(res.data))
-            .catch((e) => console.log(e))
-                     
-        } catch (error) {
-            throw error
-        }
-    }
-}
