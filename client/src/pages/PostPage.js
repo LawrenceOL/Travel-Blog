@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { LoadPostDetail } from '../store/actions/PostActions'
-import { useEffect } from 'react'
+import { LoadPostDetail, UploadComment } from '../store/actions/PostActions'
+import { useEffect, useState } from 'react'
 import Comment from '../components/Comment'
 import AddComment from '../components/AddComment'
 import { useParams } from 'react-router-dom'
@@ -13,16 +13,32 @@ const mapStateToProps = ({ postDetailState }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchPostDetail: (id) => dispatch(LoadPostDetail(id))
+        fetchPostDetail: (id) => dispatch(LoadPostDetail(id)),
+        uploadComment: (id, comment) => UploadComment(id, comment)
     }
 }
 
+
+
 const HomePage = (props) => { 
     const { id } = useParams()
+
+    const [addedComm, setAddedComm] = useState(true)
+    const [comment, setComment] = useState('')
+
     useEffect(() => {
         props.fetchPostDetail(id)
     }, [])
 
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        await props.uploadComment(id, comment)
+        .then((res) => {
+            console.log(res)
+            setAddedComm(!addedComm)
+        })
+    }
     return (
         <div>
             <h2>{props.postDetailState.postDetail.name}</h2>
@@ -33,6 +49,11 @@ const HomePage = (props) => {
                     <Comment comm={comm} key={comm._id} />
                 ))}
             </div>
+            {addedComm && <AddComment 
+                            handleSubmit={handleSubmit}
+                            comment={comment}
+                            setComment={setComment}
+                             />}
         </div>
     )
 }

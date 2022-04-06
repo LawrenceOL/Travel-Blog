@@ -1,7 +1,8 @@
-const { GET_POST_DETAIL } = require('../types')
+const { GET_POST_DETAIL, ADD_COMMENT } = require('../types')
 
 const initialState = {
-    postDetail: {}
+    postDetail: {},
+
 }
 
 const PostDetailReducer = (state =initialState, action) => {
