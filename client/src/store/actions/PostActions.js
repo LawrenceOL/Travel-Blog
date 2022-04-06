@@ -31,3 +31,17 @@ export const LoadPostDetail = (id) => {
         }
     }
 }
+
+//Add a comment to database
+export const UploadComment = (id, comment) => {
+    return async () => {
+        try {
+            await services.GetPostDetail(id, comment)
+            .then((res) => console.log(res.data))
+            .catch((e) => console.log(e))
+                     
+        } catch (error) {
+            throw error
+        }
+    }
+}
