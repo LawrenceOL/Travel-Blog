@@ -13,17 +13,25 @@ export const GetPosts = async () => {
 export const GetPostDetail = async (id) => {
     try {
         const response = await Client.get(`posts/${id}`)
-        console.log(response, "RESPONSE for Detail")
+        // console.log(response.data, "RESPONSE for Detail")
         return response.data
     } catch (error) {
         throw error
     }
 }
 
-export const AddComment = async (id, comment) => {
+export const AddComment = async (id, newComment) => {
+    console.log(newComment, "POST api call");
     try {
-        await Client.post(`comment/${id}`, comment)
-        .then((res) => res.data)
+        const data = {
+            rating: 5,
+            comment: newComment,
+            postId: id
+        }
+        console.log(data, "DATA");
+        
+        await Client.post(`comment/${id}`, data)
+        .then((res) => console.log(res, "Successfully add a comment"))
         .catch((error) => console.log(error))
     } catch (error) {
         throw error
