@@ -12,12 +12,11 @@ const getAllPosts = async (req, res) => {
 
 // Function to get all comments from respective post
 // this may need revision
-const getAllComments = async (req, res) => {
+const getPostById = async (req, res) => {
   try {
     const { id } = req.params
-    const post = await Post.findByID(id)
-    const comments = await post.populate('comments')
-    return res.status(200).json(comments)
+    const post = await Post.findById(id).populate('comments')
+    return res.status(200).json(post)
   } catch (error) {
     return res.status(500).send(error.message)
   }
@@ -41,5 +40,5 @@ const addComment = async (req, res) => {
 module.exports = {
   getAllPosts,
   addComment,
-  getAllComments
+  getPostById
 }
