@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const controllers = require('../controllers')
-const PostSchema = require('../models/recipes')
+const PostSchema = require('../model/post')
 const router = Router();
 
 router.get('/', (req, res) => res.send('This is root server page!'))
