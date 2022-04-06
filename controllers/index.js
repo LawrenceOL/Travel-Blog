@@ -26,7 +26,7 @@ const getPostById = async (req, res) => {
 const addComment = async (req, res) => {
   try {
     const { id } = req.params
-    const post = await Post.findByID(id)
+    const post = await Post.findById(id)
     const comment = await new Comment(req.body)
     post.comments = [...post.comments, comment._id]
     await comment.save()
