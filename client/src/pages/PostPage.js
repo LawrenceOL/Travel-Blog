@@ -45,7 +45,7 @@ const HomePage = (props) => {
     
 
     return (
-        <div>
+        <div className='post-page'>
             <h2>{props.postDetailState.postDetail.name}</h2>
             <img src={props.postDetailState.postDetail.image} alt='post image' />
             <h5>{props.postDetailState.postDetail.location}</h5>
@@ -64,7 +64,7 @@ const HomePage = (props) => {
 
             {props.postDetailState.moreComment && 
             <div>
-                <ReactStars onChange={''} size={24} color2={'#ffd700'} />
+                <ReactStars onChange={''} size={24} color2={'#ffd700'} className={"stars"}/>
                 <textarea 
                     onChange={handleChange}
                     value={props.postDetailState.newComment}
