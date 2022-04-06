@@ -14,9 +14,10 @@ const getAllPosts = async (req, res) => {
 // this may need revision
 const getAllComments = async (req, res) => {
   try {
+    const { id } = req.params
     const post = await Post.findByID(id)
-    const com = await post.comment
-    return res.status(200).json({ com })
+    const comments = await post.populate('comments')
+    return res.status(200).json(comments)
   } catch (error) {
     return res.status(500).send(error.message)
   }
@@ -25,12 +26,13 @@ const getAllComments = async (req, res) => {
 // Function to add a comment on a post
 const addComment = async (req, res) => {
   try {
+    const { id } = req.params
+    const post = await Post.findByID(id)
     const comment = await new Comment(req.body)
+    post.comments = [...post.comments, comment._id]
     await comment.save()
-    const Post = await Post.findByID(id)
-    return res.status(201).json({
-      comment
-    })
+    await post.save()
+    return res.status(201).json(comment)
   } catch (error) {
     return res.status(500).json({ error: error.message })
   }

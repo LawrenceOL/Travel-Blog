@@ -1,11 +1,10 @@
-const { Router } = require('express');
+const { Router } = require('express')
 const controllers = require('../controllers')
-const PostSchema = require('../model/post')
-const router = Router();
+const router = Router()
 
 router.get('/', (req, res) => res.send('This is root server page!'))
-router.get('/api/post', controllers.getAllPosts)
-router.get('/api/comment', controllers.getAllComments)
-router.post('/api/comment' , controllers.addComment)
+router.get('/posts', controllers.getAllPosts)
+router.get('/comments/:id', controllers.getAllComments)
+router.post('/comment', controllers.addComment)
 
-module.exports = router;
+module.exports = router
