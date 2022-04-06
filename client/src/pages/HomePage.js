@@ -20,7 +20,8 @@ const HomePage = (props) => {
     useEffect(() => {
         props.fetchPosts()
     }, [])
-
+    
+    
     return (
         <div>
             {props.postState.posts.map((post) => (

@@ -2,9 +2,9 @@ import Client from ".";
 
 export const GetPosts = async () => {
     try {
-        await Client.get(`posts`)
-        .then((res) => res.data)
-        .catch((error) => console.log(error))
+        const response = await Client.get(`posts`)
+        console.log(response, "RESPONSE")
+        return response.data
     } catch (error) {
         throw error
     }
@@ -12,9 +12,9 @@ export const GetPosts = async () => {
 
 export const GetPostDetail = async (id) => {
     try {
-        await Client.get(`posts/${id}`)
-        .then((res) => res.data)
-        .catch((error) => console.log(error))
+        const response = await Client.get(`posts/${id}`)
+        console.log(response, "RESPONSE for Detail")
+        return response.data
     } catch (error) {
         throw error
     }

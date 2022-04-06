@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { LoadPostDetail, UploadComment } from '../store/actions/PostActions'
+import { LoadPostDetail, UploadComment } from '../store/actions/PostDetailActions'
 import { useEffect, useState } from 'react'
 import Comment from '../components/Comment'
 import AddComment from '../components/AddComment'
@@ -49,11 +49,11 @@ const HomePage = (props) => {
                     <Comment comm={comm} key={comm._id} />
                 ))}
             </div>
-            {addedComm && <AddComment 
+            {/* {addedComm && <AddComment 
                             handleSubmit={handleSubmit}
                             comment={comment}
                             setComment={setComment}
-                             />}
+                             />} */}
         </div>
     )
 }
