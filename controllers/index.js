@@ -15,14 +15,7 @@ const getAllPosts = async (req, res) => {
 const getPostById = async (req, res) => {
   try {
     const { id } = req.params
-    const comments = []
-    const post = await Post.findById(id)
-    for await (const commentId of post.comments) {
-      comments.push(await Comment.findById(commentId._id.toString()))
-    }
-    // await post.populate('comments')
-    // const comments = await Comment.populate('comment')
-    post.comments = comments
+    const post = await Post.findById(id).populate('comments')
     return res.status(200).json(post)
   } catch (error) {
     return res.status(500).send(error.message)
