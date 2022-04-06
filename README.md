@@ -35,11 +35,10 @@
 
 ##### Initial UI Schematic
 
-![Smile](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.PDlm3trgAkY6pGPcbRt4SQHaEK%26pid%3DApi&f=1)
+![Schematic](https://github.com/LawrenceOL/Travel-Blog/blob/main/assets/front%20end%20UI.png?raw=true)
 
-##### Screenshot from early version of the travel blog
+##### Screenshot from an early version of the travel blog
 
-![Scared](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.buntINTHFLyDODyMKXNYcgHaEK%26pid%3DApi&f=1)
 
 ---
 
