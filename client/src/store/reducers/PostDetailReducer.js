@@ -1,9 +1,9 @@
-const { GET_POST_DETAIL, UPDATE_COMMENTING, UPDATE_NEW_COMMENT } = require('../types')
+const { GET_POST_DETAIL,POST_COMMENT, TOGGLE_MORE_COMMENT, UPDATE_NEW_COMMENT } = require('../types')
 
 const initialState = {
     postDetail: {},
-    newComment: {},
-    commenting: false
+    newComment: '',
+    moreComment: false
 }
 
 const PostDetailReducer = (state =initialState, action) => {
@@ -12,6 +12,10 @@ const PostDetailReducer = (state =initialState, action) => {
             return {...state, postDetail: action.payload}
         case UPDATE_NEW_COMMENT:
             return {...state, newComment: action.payload }
+        case POST_COMMENT:
+            return {...state, newComment: action.payload }
+        case TOGGLE_MORE_COMMENT:
+            return {...state, moreComment: action.payload}
         default:
             return {...state}
     }

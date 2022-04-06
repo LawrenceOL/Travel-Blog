@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { LoadPostDetail, UploadComment } from '../store/actions/PostDetailActions'
+import { LoadPostDetail, UploadComment, UpdateComment, ToggleMoreComment } from '../store/actions/PostDetailActions'
 import { useEffect, useState } from 'react'
 import Comment from '../components/Comment'
 import AddComment from '../components/AddComment'
@@ -14,7 +14,9 @@ const mapStateToProps = ({ postDetailState }) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchPostDetail: (id) => dispatch(LoadPostDetail(id)),
-        uploadComment: (id, comment) => UploadComment(id, comment)
+        uploadComment: (id, newComment) => dispatch(UploadComment(id, newComment)),
+        updateComment: (comment) => dispatch(UpdateComment(comment)),
+        toggleMoreComment: (value) => dispatch(ToggleMoreComment(value))
     }
 }
 
@@ -22,38 +24,50 @@ const mapDispatchToProps = (dispatch) => {
 
 const HomePage = (props) => { 
     const { id } = useParams()
-
-    const [addedComm, setAddedComm] = useState(true)
-    const [comment, setComment] = useState('')
+    
 
     useEffect(() => {
         props.fetchPostDetail(id)
-    }, [])
+    }, [id])
 
     
-    const handleSubmit = async (e) => {
+    const handleSubmit =  (e) => {
         e.preventDefault()
-        await props.uploadComment(id, comment)
-        .then((res) => {
-            console.log(res)
-            setAddedComm(!addedComm)
-        })
+        props.uploadComment(id, props.postDetailState.newComment)
+        props.toggleMoreComment(!props.postDetailState.moreComment)
     }
+
+    const handleChange = async (e) => {
+        await props.updateComment(e.target.value)
+    }
+
+    // console.log(props.postDetailState.postDetail.comments, "comments");
+    console.log(props.postDetailState.newComment, "updating newComment");
+    
+
     return (
         <div>
             <h2>{props.postDetailState.postDetail.name}</h2>
             <img src={props.postDetailState.postDetail.image} alt='post image' />
             <h5>{props.postDetailState.postDetail.location}</h5>
-            <div className='comment-container'>
-                {props.postDetailState.postDetail.comments.map((comm) => (
-                    <Comment comm={comm} key={comm._id} />
-                ))}
-            </div>
+            
+            {/* {props.postDetailState.postDetail.comments.map((comm) => (
+                <Comment rating={comm.rating} comment={comm.comment} key={comm._id} />
+            ))} */}
+            
             {/* {addedComm && <AddComment 
                             handleSubmit={handleSubmit}
                             comment={comment}
                             setComment={setComment}
                              />} */}
+
+            {props.postDetailState.moreComment && 
+            <textarea 
+                onChange={handleChange}
+                value={props.postDetailState.newComment}
+                placeholder="Add your thoughts..."
+            />}
+            <button onClick={handleSubmit} >Add</button>
         </div>
     )
 }

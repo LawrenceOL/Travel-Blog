@@ -17,12 +17,28 @@ export const LoadPostDetail = (id) => {
 }
 
 //Add a comment to database
-export const UploadComment = (id) => {
-    return async () => {
+export const UploadComment = (id, newComment) => {
+    return async (dispatch) => {
         try {
-            await services.GetPostDetail(id)
+            await services.AddComment(id, newComment)
+            dispatch({
+                type: types.POST_COMMENT,
+                payload: ''
+            }) 
         } catch (error) {
             throw error
         }
     }
 }
+
+// Update the comment state
+export const UpdateComment = (comment) => ({
+        type: types.UPDATE_NEW_COMMENT,
+        payload: comment
+})
+
+// Update the moreComment state
+export const ToggleMoreComment = (value) => ({
+    type: types.TOGGLE_MORE_COMMENT,
+    payload: value
+})

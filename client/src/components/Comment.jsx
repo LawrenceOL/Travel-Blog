@@ -1,11 +1,11 @@
 
 
-const Comment = ({comm}) => {
+const Comment = ({rating, comment}) => {
 
     return (
         <div>
-            <h5>{comm.rating}</h5>
-            <p>{comm.comment}</p>
+            <h5>{rating}</h5>
+            <p>{comment}</p>
         </div>
     )
 }
