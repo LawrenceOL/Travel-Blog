@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: rgba(96, 207, 196, 0.432);
+  background-size: cover;
 }
 
 .App-logo {
@@ -39,4 +41,47 @@
 
 img {
   width: 300px;
+}
+.post-page{
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/001/409/192/small/abstract-geometric-banner-free-vector.jpg");
+  background-size: cover;
+}
+.post-page h2,h5{
+  color:rgba(223, 238, 238, 0.951);
+  background-color: #3e434c80;
+}
+h2{
+  background-color: #3e434c46;
+  text-decoration: underline;
+
+}
+h5{
+  background-color: #393e4646;
+
+}
+button{
+  background-color: rgba(248, 250, 252, 0.752);
+  color:black;
+  border-radius: 12px;
+}
+button:hover{
+  background-color: black;
+  color: rgba(248, 250, 252, 0.752);
+}
+
+.home{
+  background-image: url('https://evisionthemes.com/wp-content/uploads/2020/12/pattern1-min.png');
+  background-size: cover;
+  background-repeat: repeat-x;
+  color: blue;
+  border-radius: 15px;
+  margin: 3px;
+}
+.home h5{
+  color: blue;
+}
+.stars {
+  display:flex;
+  align-content: center;
+  justify-items: center;
 }
