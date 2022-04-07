@@ -27,7 +27,6 @@
 
 ##### Our developement Trello board can [here](https://trello.com/b/wL91ojUg/travel-blog).
 
-##### The travel blog was deployed on Heroku! Check it out [here](URL).
 
 ---
 
@@ -37,7 +36,6 @@
 
 ![Schematic](https://github.com/LawrenceOL/Travel-Blog/blob/main/assets/front%20end%20UI.png?raw=true)
 
-##### Screenshot from an early version of the travel blog
 
 
 ---
