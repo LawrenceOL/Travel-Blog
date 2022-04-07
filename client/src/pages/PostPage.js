@@ -46,6 +46,7 @@ const HomePage = (props) => {
       <h2>{props.postDetailState.postDetail.name}</h2>
       <img src={props.postDetailState.postDetail.image} alt="post image" />
       <h5>{props.postDetailState.postDetail.location}</h5>
+      <p>{props.postDetailState.postDetail.review}</p>
 
       {props.postDetailState.comments.map((comm) => (
         <Comment rating={comm.rating} comment={comm.comment} key={comm._id} />
@@ -58,7 +59,7 @@ const HomePage = (props) => {
                              />} */}
 
       {props.postDetailState.moreComment && (
-        <div>
+        <div className='add-comment'>
           <ReactStars
             onChange={''}
             size={24}

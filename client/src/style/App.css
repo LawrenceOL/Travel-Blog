@@ -40,11 +40,12 @@
 }
 
 img {
-  width: 300px;
+  max-width: 80%;
 }
 .post-page{
   background-image: url("https://static.vecteezy.com/system/resources/thumbnails/001/409/192/small/abstract-geometric-banner-free-vector.jpg");
   background-size: cover;
+  padding: 30px 50px;
 }
 .post-page h2,h5{
   color:rgba(223, 238, 238, 0.951);
@@ -84,4 +85,25 @@ button:hover{
   display:flex;
   align-content: center;
   justify-items: center;
+}
+
+.comment, .add-comment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 30px;
+  background-color: transparent;
+}
+.nav a {
+  text-decoration: none;
+}
+header {
+  color: black;
 }
